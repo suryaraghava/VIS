@@ -1,0 +1,151 @@
+body {
+	font-family: arial;
+}
+.headerDivEmpty {
+	width: 50%;
+	height: 50px;
+	margin: 0 auto;
+	padding: 3px 20px;
+	text-align: center;
+}
+/* Start - Styles for Page 1 */
+.headerDiv {	
+	width: 50%;
+	height: 50px;
+	margin: 0 auto;
+	padding: 3px 20px;
+	text-align: center;
+	font-size: 25px;
+	border: 1px solid gray;
+}
+
+.centerDiv {
+	width: 50%;
+	height: 200px;
+	margin: 0 auto;	
+	border: 1px solid gray;
+	margin-top: 50px;
+	padding: 20px;
+}
+
+.centerDiv #warningDiv, .centerDiv #loginDiv {
+	height: 100%;
+	width: 80%;
+	margin: 0 auto;
+}
+
+.centerDiv #loginDiv {
+	width: 50%;
+}
+
+.centerDiv #warningDiv button {
+	margin: 0 40%;
+	margin-top: 30px;
+}
+
+.centerDiv .loginRow {
+	margin: 15px 0;
+}
+
+.centerDiv .loginRow div.label{
+	display: inline-block;
+	width: 20%;
+}
+
+.centerDiv .loginRow span.spacer{
+	width: 2%;
+}
+
+.centerDiv .loginRow div.value{
+	display: inline-block;
+	width: 27%;
+}
+/* End - Styles for Page 1 */
+
+/* Start - Styles for Page 2 */
+.outerDiv {
+	margin: 0 auto;
+	margin-top:6%;
+	width: 80%;
+}
+
+.leftDiv, .rightDiv {
+	width: 45%;
+	display: inline-block;
+}
+
+.menuItem {
+	width: 40%;
+	height: 140px;
+	margin: 0 auto;
+	margin-bottom: 30px;
+	border: 1px solid gray;
+	border-radius: 25px;
+	padding: 10px;
+	padding-left: 25px;
+}
+
+.menuItem h4 {
+	font-size: 22px;
+}
+
+.menuItem div {
+	margin-bottom: 5px;
+}
+
+.menuItem a {
+	text-decoration: underline;
+}
+
+/* End - Styles for Page 2 */
+
+/* Start - Styles for Page 3 */
+.deviceManagement {
+	width: 80%;
+	margin: 0 auto;
+	margin-top: 3%;
+	height: 670px;
+}
+
+.deviceManagement .leftNavigation {
+	width: 20%;
+	height: 100%;
+	border: 1px solid gray;
+	float: left;
+}
+
+.deviceManagement .rightContent {
+	margin-left: 10px;
+	height: 100%;
+	width: 75%;
+	border: 1px solid gray;	
+	float: left;
+}
+
+.deviceManagement .leftNavigation .header {
+	height: 10%;
+}
+
+.deviceManagement .leftNavigation .header h4 {
+	text-align: center;	
+	vertical-align: middle;
+}
+
+.deviceManagement .leftNavigation .linksDiv {
+	padding: 15px;
+}
+
+#leftMenu..ui-widget-content {
+	background: none;
+}
+
+.linksDiv li {
+	border: 1px solid gray;
+	background-color: #eeeeee;
+}
+
+.linksDiv .ui-menu .ui-menu-item {
+	margin-bottom: 3px;
+}
+
+/* End - Styles for Page 3 */
