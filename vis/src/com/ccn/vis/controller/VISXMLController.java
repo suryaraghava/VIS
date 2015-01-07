@@ -216,10 +216,14 @@ public class VISXMLController extends HttpServlet {
     }
     
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+    	doProcess(request, response);
 	}
     
     protected void doPost(HttpServletRequest request, HttpServletResponse response){
+    	doProcess(request, response);
+    }
+    
+    protected void doProcess(HttpServletRequest request, HttpServletResponse response){
     	if(request.getParameter("action")!=null){
     		List<User> lstUser=new ArrayList<User>();
 			String action=(String)request.getParameter("action");
@@ -229,6 +233,7 @@ public class VISXMLController extends HttpServlet {
 			//System.out.println("Main Server:::"+mainServer+":::"+side);
 			Gson gson = new Gson();
 			response.setContentType("application/json");
+			
 			if(action.equals("list")){
 				try{
 					lstUser=dao.getAllUsers(mainServer,side);
@@ -249,20 +254,25 @@ public class VISXMLController extends HttpServlet {
 					}
 					ex.printStackTrace();
 				}
-			}else if(action.equals("edit")){
+			}
+			
+			else if(action.equals("edit")){
 				System.out.println("In Edit...");				
 				try{
-					//String main_Server = request.getParameter("mainServer");
+					
 					String server= request.getParameter("subServerName");
 					String hostname=request.getParameter("host");
 					String ipaddress=request.getParameter("ip");
 					String desc=request.getParameter("description");
-					System.out.println("Main_Server:::::"+request.getAttribute("main_server"));
-					System.out.println("Side:"+request.getAttribute("side"));
+					String status = request.getParameter("status");
+					String enable = request.getParameter("enable");
+					System.out.println("Main_Server:::::"+mainServer);
+					System.out.println("Side:"+side);
 					System.out.println("Server:"+server);
 					System.out.println("Hostname:"+hostname);
 					System.out.println("ipaddress:"+ipaddress);
 					System.out.println("desc:"+desc);
+					System.out.println("status:"+status);
 					DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 					DocumentBuilder builder = null;
 					try {
@@ -294,6 +304,8 @@ public class VISXMLController extends HttpServlet {
 						{
 							Element eElement = (Element) node;
 							String mainServerName=eElement.getAttribute("name");
+							String sideName = eElement.getAttribute("side");
+							if(mainServerName.equalsIgnoreCase(mainServer)&&side.equalsIgnoreCase(sideName)){
 							NodeList nnlist=eElement.getElementsByTagName("SubServer");
 							for (int j=0;j<nnlist.getLength();j++)
 							{
@@ -301,9 +313,6 @@ public class VISXMLController extends HttpServlet {
 								if(snode.getNodeType()==Node.ELEMENT_NODE)
 								{ 
 									Element subeElement=(Element)snode;
-									System.out.println("Server:"+server);
-									System.out.println("SubElement Attribute:"+subeElement.getAttribute("name"));
-									
 									if(server.equalsIgnoreCase(subeElement.getAttribute("name")))
 									{
 										NodeList list= subeElement.getChildNodes();
@@ -318,10 +327,17 @@ public class VISXMLController extends HttpServlet {
 											if ("desc".equals(childNode.getNodeName())) {
 												childNode.setTextContent(desc);
 											}
+											if ("enable".equals(childNode.getNodeName())) {
+												if(enable.equals("Yes"))
+												childNode.setTextContent("1");
+												else
+													childNode.setTextContent("0");
+											}
 										}
 									}
 								}
 							}	
+							}
 						}
 					}
 					// write the content into xml file
@@ -357,10 +373,15 @@ public class VISXMLController extends HttpServlet {
 					}
 					ex.printStackTrace();
 				}
-			}else if(action.equals("delete")){
+			}
+			
+			else if(action.equals("delete")){
 				try{
 					
 					String server= request.getParameter("subServerName");
+					String ipAddress = request.getParameter("ip");
+					System.out.println(ipAddress);
+					System.out.println(server);
 					DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 					DocumentBuilder builder = factory.newDocumentBuilder();
 					//Build Document
@@ -378,6 +399,8 @@ public class VISXMLController extends HttpServlet {
 							//Print each employee's detail        
 							Element eElement = (Element) node;
 							String mainServerName=eElement.getAttribute("name");
+							String sideName = eElement.getAttribute("side");
+							if(mainServerName.equalsIgnoreCase(mainServer)&&side.equalsIgnoreCase(sideName)){
 							NodeList nnlist=eElement.getElementsByTagName("SubServer");
 							for (int j=0;j<nnlist.getLength();j++)
 							{
@@ -393,6 +416,7 @@ public class VISXMLController extends HttpServlet {
 									}
 								}
 							}	
+						}
 						}
 					}
 					TransformerFactory transformerFactory = TransformerFactory.newInstance();

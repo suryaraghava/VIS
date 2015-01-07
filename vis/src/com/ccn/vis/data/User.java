@@ -12,7 +12,15 @@ public class User {
 	private String mainServerName;
 	private int serialNumber;
 	private String ans;
+	private String enable;
 	
+	
+	public String getEnable() {
+		return enable;
+	}
+	public void setEnable(String enable) {
+		this.enable = enable;
+	}
 	public String getAns() {
 		return ans;
 	}

@@ -15,7 +15,7 @@ public class UserDAO {
 		User user =null;
 		String status=null;
 		String subServerName=null;
-		
+		String enable = null;
 		String host=null;
 		String ip=null;
 		String desc=null;
@@ -44,17 +44,23 @@ public class UserDAO {
 								user = new User();
 								Element subeElement=(Element)snode;
 								if(mainServer.equalsIgnoreCase(mainServerName)&&serverSide.equalsIgnoreCase(side)){
-									status=subeElement.getAttribute("status").toString();
+									
 									subServerName=subeElement.getAttribute("name");
 									
 									host=subeElement.getElementsByTagName("host").item(0).getTextContent();
 									ip=subeElement.getElementsByTagName("ip").item(0).getTextContent();
 									desc=subeElement.getElementsByTagName("desc").item(0).getTextContent();
-									
+									status=subeElement.getElementsByTagName("status").item(0).getTextContent();
+									enable = subeElement.getElementsByTagName("enable").item(0).getTextContent();
 									if(status.equals("1")){
 										status="OK";
 									}else{
 										status="Failed";
+									}
+									if(enable.equals("1")){
+										enable="Yes";
+									}else{
+										enable="No";
 									}
 									user.setStatus(status);
 									user.setSubServerName(subServerName);
@@ -62,21 +68,27 @@ public class UserDAO {
 									user.setDescription(desc);
 									user.setHost(host);
 									user.setIp(ip);
-
+									user.setEnable(enable);
 									users.add(user);
 								}
 								else if(mainServer.equalsIgnoreCase("null")&&side.equalsIgnoreCase("null")){
-									status=subeElement.getAttribute("status").toString();
+									
 									subServerName=subeElement.getAttribute("name");
 									
 									host=subeElement.getElementsByTagName("host").item(0).getTextContent();
 									ip=subeElement.getElementsByTagName("ip").item(0).getTextContent();
 									desc=subeElement.getElementsByTagName("desc").item(0).getTextContent();
-									
+									status=subeElement.getElementsByTagName("status").item(0).getTextContent();
+									enable = subeElement.getElementsByTagName("enable").item(0).getTextContent();
 									if(status.equals("1")){
 										status="OK";
 									}else{
 										status="Failed";
+									}
+									if(enable.equals("1")){
+										enable="Yes";
+									}else{
+										enable="No";
 									}
 									user.setStatus(status);
 									user.setSubServerName(subServerName);
@@ -84,7 +96,7 @@ public class UserDAO {
 									user.setDescription(desc);
 									user.setHost(host);
 									user.setIp(ip);
-
+									user.setEnable(enable);
 									users.add(user);
 								}
 								

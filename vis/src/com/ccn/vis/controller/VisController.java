@@ -170,6 +170,7 @@ import org.xml.sax.SAXException;
 
 
 
+
 import com.ccn.vis.data.User;
 
 import java.io.File;
@@ -285,31 +286,34 @@ System.out.println(status);
 	@RequestMapping(value = "/vis/cbaSave", method = RequestMethod.POST,headers={"Accept=application/json"},produces="application/json")
 	public @ResponseBody User updateXml(HttpServletRequest req)throws Exception
 	{
-		System.out.println("AAA");
+		
 		User usrData =  new User();
 		boolean flag=false;
-		String status="no";
+		String status="Fail";
 		
-		String mainServer=req.getParameter("mainServer").toString();
+		String mainServer=req.getParameter("component").toString();
 		String side = req.getParameter("side").toString();
+		
+		String ipAddress=req.getParameter("ipaddress");
+		String server= req.getParameter("serverName");
+		String hostname=req.getParameter("hostname");
+		String desc=req.getParameter("description");
+		
+		String enable = req.getParameter("enable");
 		System.out.println("Main Server:"+mainServer);
 		System.out.println("Side:"+side);
-		String ipAddress=req.getParameter("ip");
-		String server= req.getParameter("subServerName");
-		String hostname=req.getParameter("host");
-		String desc=req.getParameter("description");
-
 		System.out.println("ip ADDRESS:"+ipAddress);
-
+		System.out.println("enable:"+enable);
 		if(ipAddress==null || ipAddress == "" || ipAddress.equals(" ")){
 			ipAddress = "0.0.0.0";
 		}
 		try{
-			/*flag=InetAddress.getByName(ipAddress).isReachable(5000);
+		/*	flag=InetAddress.getByName(ipAddress).isReachable(5000);
 
 			if(flag)
 			{*/
-				status="ok";
+				status = "OK";
+				String componentStatus="1";
 				usrData.setHost(InetAddress.getByName(ipAddress).getHostName().toString());
 
 				DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -318,29 +322,43 @@ System.out.println(status);
 				document.getDocumentElement().normalize(); 
 				Element root = document.getDocumentElement();
 				NodeList nList = document.getElementsByTagName("MainServer");
-
+				for (int i = 0; i < nList.getLength(); i++)
+				{
+					Node node = nList.item(i);
+					if (node.getNodeType() == Node.ELEMENT_NODE)
+					{
+						Element eElement = (Element) node;
+						String mainServerName=eElement.getAttribute("name");
+						String sideName = eElement.getAttribute("side");
+						if(mainServerName.equalsIgnoreCase(mainServer)&&side.equalsIgnoreCase(sideName)){
+							System.out.println(mainServerName+":"+sideName);
 				Element subServer = document.createElement("SubServer");
-				Attr atr=document.createAttribute("name");
-				atr.setValue(server);
-				Attr atr1=document.createAttribute("status");
-				atr1.setValue("1");
-				Attr atr2=document.createAttribute("side");
-				atr2.setValue(side);
+				Attr atr=document.createAttribute("location");
+				atr.setValue("side"+side);
+				Attr atr1=document.createAttribute("name");
+				atr1.setValue(server);
+				
 				subServer.setAttributeNode(atr);
 				subServer.setAttributeNode(atr1);
-				subServer.setAttributeNode(atr2);
 				Element hostelement=document.createElement("host");
 				Element ipelement=document.createElement("ip");
 				Element descelement=document.createElement("desc");
+				Element enableelement=document.createElement("enable");
+				Element statuselement=document.createElement("status");
 				hostelement.appendChild(document.createTextNode(hostname));
 				ipelement.appendChild(document.createTextNode(ipAddress));
 				descelement.appendChild(document.createTextNode(desc));
+				enableelement.appendChild(document.createTextNode(enable));
+				statuselement.appendChild(document.createTextNode(componentStatus));
 				subServer.appendChild(hostelement);
 				subServer.appendChild(ipelement);
 				subServer.appendChild(descelement);
-
-				nList.item(0).appendChild(subServer);
-
+				subServer.appendChild(enableelement);
+				subServer.appendChild(statuselement);
+				nList.item(i).appendChild(subServer);
+						}
+					}
+				}
 				TransformerFactory transformerFactory = TransformerFactory.newInstance();
 				Transformer transformer = transformerFactory.newTransformer();
 				DOMSource source = new DOMSource(document);

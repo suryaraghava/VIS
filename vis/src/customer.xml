@@ -1,34 +1,110 @@
 <?xml version="1.0" encoding="UTF-8"?><Servers>
 <MainServer name="UnifiedCVP" side="A">
-	<SubServer location="sideA" name="Side A VXmlServer" status="1"><host>cvp.vs.dev.com</host><ip>10.16.69.41</ip><desc>CVP-VXML Server</desc><enable>1</enable></SubServer>
-	<SubServer location="sideA" name="Side A ReportingServer" status="1"><host>cvp.rs.dev.com</host><ip>10.16.64.21</ip><desc>CVP-RS</desc><enable>1</enable></SubServer>
-	<SubServer location="sideA" name="Side A OperationsConsole" status="1"><host>cvp.oc.dev.com</host><ip>10.16.59.64</ip><desc>CVP-OC</desc><enable>1</enable></SubServer>
+    <SubServer location="sideA" name="Call Server" ><host>cvp.cs.dev.com</host><ip>10.16.69.41</ip><desc>CVP-CALL Server</desc><enable>1</enable><status>1</status></SubServer>
+    <SubServer location="sideA" name="VXML Server" ><host>cvp.vs.dev.com</host><ip>10.16.69.41</ip><desc>CVP-VXML Server</desc><enable>1</enable><status>1</status></SubServer>
+	<SubServer location="sideA" name="Reporting Server" ><host>cvp.rs.dev.com</host><ip>10.16.69.41</ip><desc>CVP-Reporting Server</desc><enable>1</enable><status>1</status></SubServer>
+	<SubServer location="sideA" name="Video Media Server" ><host>cvp.ms.dev.com</host><ip>10.16.64.21</ip><desc>CVP-Media Server</desc><enable>1</enable><status>1</status></SubServer>
+	<SubServer location="sideA" name="Operations Console" ><host>cvp.oc.dev.com</host><ip>10.16.59.64</ip><desc>CVP-Operation Server</desc><enable>1</enable><status>1</status></SubServer>
 </MainServer>
 <MainServer name="UnifiedCVP" side="B">
-	<SubServer location="sideA" name="Side B VXmlServer" status="1"><host>cvp.vs.dev.com</host><ip>10.16.69.41</ip><desc>CVP-VXML Server</desc><enable>1</enable></SubServer>
-	<SubServer location="sideA" name="Side B ReportingServer" status="1"><host>cvp.rs.dev.com</host><ip>10.16.64.21</ip><desc>CVP-RS</desc><enable>1</enable></SubServer>
-	<SubServer location="sideA" name="Side B OperationsConsole" status="1"><host>cvp.oc.dev.com</host><ip>10.16.59.64</ip><desc>CVP-OC</desc><enable>1</enable></SubServer>
+	<SubServer location="sideB" name="Call Server" ><host>cvp.cs.dev.com</host><ip>10.16.69.41</ip><desc>CVP-CALL Server</desc><enable>1</enable><status>1</status><status>1</status></SubServer>
+    <SubServer location="sideB" name="VXML Server" ><host>cvp.vs.dev.com</host><ip>10.16.69.41</ip><desc>CVP-VXML Server</desc><enable>1</enable><status>1</status></SubServer>
+	<SubServer location="sideB" name="Reporting Server" ><host>cvp.rs.dev.com</host><ip>10.16.69.41</ip><desc>CVP-Reporting Server</desc><enable>1</enable><status>1</status></SubServer>
+	<SubServer location="sideB" name="Video Media Server" ><host>cvp.ms.dev.com</host><ip>10.16.64.21</ip><desc>CVP-Media Server</desc><enable>1</enable><status>1</status></SubServer>
+	<SubServer location="sideB" name="Operations Console" ><host>cvp.oc.dev.com</host><ip>10.16.59.64</ip><desc>CVP-Operation Server</desc><enable>1</enable><status>1</status></SubServer>
 </MainServer>
 <MainServer name="UnifiedICM" side="A">
-	<SubServer location="sideA" name="Side A VXmlServer" status="1"><host>cvp.vs.dev.com</host><ip>10.16.69.41</ip><desc>CVP-VXML Server</desc><enable>1</enable></SubServer>
-	<SubServer location="sideA" name="Side A ReportingServer" status="1"><host>cvp.rs.dev.com</host><ip>10.16.64.21</ip><desc>CVP-RS</desc><enable>1</enable></SubServer>
-	<SubServer location="sideA" name="Side A OperationsConsole" status="1"><host>cvp.oc.dev.com</host><ip>10.16.59.64</ip><desc>CVP-OC</desc><enable>1</enable></SubServer>
+	<SubServer location="sideA" name="Call Router" ><host>cvp.vs.dev.com</host><ip>10.16.69.41</ip><desc>CVP-VXML Server</desc><enable>1</enable><status>1</status></SubServer>
+	<SubServer location="sideA" name="Logger" ><host>cvp.rs.dev.com</host><ip>10.16.64.21</ip><desc>CVP-RS</desc><enable>1</enable><status>1</status></SubServer>
+	<SubServer location="sideA" name="AW" ><host>cvp.oc.dev.com</host><ip>10.16.59.64</ip><desc>CVP-OC</desc><enable>1</enable><status>1</status></SubServer>
+	<SubServer location="sideA" name="AW-HDS" ><host>cvp.oc.dev.com</host><ip>10.16.59.64</ip><desc>CVP-OC</desc><enable>1</enable><status>1</status></SubServer>
+	<SubServer location="sideA" name="CCM PG" ><host>cvp.oc.dev.com</host><ip>10.16.59.64</ip><desc>CVP-OC</desc><enable>1</enable><status>1</status></SubServer>
+	<SubServer location="sideA" name="VRU PG" ><host>cvp.oc.dev.com</host><ip>10.16.59.64</ip><desc>CVP-OC</desc><enable>1</enable><status>1</status></SubServer>
+	<SubServer location="sideA" name="MR PG" ><host>cvp.oc.dev.com</host><ip>10.16.59.64</ip><desc>CVP-OC</desc><enable>1</enable><status>1</status></SubServer>
+	<SubServer location="sideA" name="GatewayXML" ><host>cvp.oc.dev.com</host><ip>10.16.59.64</ip><desc>CVP-OC</desc><enable>1</enable><status>1</status></SubServer>
 </MainServer>
 <MainServer name="UnifiedICM" side="B">
-	<SubServer location="sideA" name="Side B VXmlServer" status="1"><host>cvp.vs.dev.com</host><ip>10.16.69.41</ip><desc>CVP-VXML Server</desc><enable>1</enable></SubServer>
-	<SubServer location="sideA" name="Side B ReportingServer" status="1"><host>cvp.rs.dev.com</host><ip>10.16.64.21</ip><desc>CVP-RS</desc><enable>1</enable></SubServer>
-	<SubServer location="sideA" name="Side B OperationsConsole" status="1"><host>cvp.oc.dev.com</host><ip>10.16.59.64</ip><desc>CVP-OC</desc><enable>1</enable></SubServer>
+	<SubServer location="sideB" name="Call Router" ><host>cvp.vs.dev.com</host><ip>10.16.69.41</ip><desc>CVP-VXML Server</desc><enable>1</enable><status>1</status></SubServer>
+	<SubServer location="sideB" name="Logger" ><host>cvp.rs.dev.com</host><ip>10.16.64.21</ip><desc>CVP-RS</desc><enable>1</enable><status>1</status></SubServer>
+	<SubServer location="sideB" name="AW" ><host>cvp.oc.dev.com</host><ip>10.16.59.64</ip><desc>CVP-OC</desc><enable>1</enable><status>1</status></SubServer>
+	<SubServer location="sideB" name="AW-HDS" ><host>cvp.oc.dev.com</host><ip>10.16.59.64</ip><desc>CVP-OC</desc><enable>1</enable><status>1</status></SubServer>
+	<SubServer location="sideB" name="CCM PG" ><host>cvp.oc.dev.com</host><ip>10.16.59.64</ip><desc>CVP-OC</desc><enable>1</enable><status>1</status></SubServer>
+	<SubServer location="sideB" name="VRU PG" ><host>cvp.oc.dev.com</host><ip>10.16.59.64</ip><desc>CVP-OC</desc><enable>1</enable><status>1</status></SubServer>
+	<SubServer location="sideB" name="MR PG" ><host>cvp.oc.dev.com</host><ip>10.16.59.64</ip><desc>CVP-OC</desc><enable>1</enable><status>1</status></SubServer>
+	<SubServer location="sideB" name="GatewayXML" ><host>cvp.oc.dev.com</host><ip>10.16.59.64</ip><desc>CVP-OC</desc><enable>1</enable><status>1</status></SubServer>
 </MainServer>
 <MainServer name="UnifiedCM" side="A">
-	<SubServer location="sideA" name="Side A VXmlServer" status="1"><host>cvp.vs.dev.com</host><ip>10.16.69.41</ip><desc>CVP-VXML Server</desc><enable>1</enable></SubServer>
-	<SubServer location="sideA" name="Side A ReportingServer" status="1"><host>cvp.rs.dev.com</host><ip>10.16.64.21</ip><desc>CVP-RS</desc><enable>1</enable></SubServer>
-	<SubServer location="sideA" name="Side A OperationsConsole" status="1"><host>cvp.oc.dev.com</host><ip>10.16.59.64</ip><desc>CVP-OC</desc><enable>1</enable></SubServer>
+	<SubServer location="sideA" name="Publisher" ><host>cvp.vs.dev.com</host><ip>10.16.69.41</ip><desc>CVP-VXML Server</desc><enable>1</enable><status>1</status></SubServer>
+	<SubServer location="sideA" name="Subsricber" ><host>cvp.rs.dev.com</host><ip>10.16.64.21</ip><desc>CVP-RS</desc><enable>1</enable><status>1</status></SubServer>
+	
 </MainServer>
 <MainServer name="UnifiedCM" side="B">
-	<SubServer location="sideA" name="Side B VXmlServer" status="1"><host>cvp.vs.dev.com</host><ip>10.16.69.41</ip><desc>CVP-VXML Server</desc><enable>1</enable></SubServer>
-	<SubServer location="sideA" name="Side B ReportingServer" status="1"><host>cvp.rs.dev.com</host><ip>10.16.64.21</ip><desc>CVP-RS</desc><enable>1</enable></SubServer>
-	<SubServer location="sideA" name="Side B OperationsConsole" status="1"><host>cvp.oc.dev.com</host><ip>10.16.59.64</ip><desc>CVP-OC</desc><enable>1</enable></SubServer>
+	<SubServer location="sideB" name="Publisher" ><host>cvp.vs.dev.com</host><ip>10.16.69.41</ip><desc>CVP-VXML Server</desc><enable>1</enable><status>1</status></SubServer>
+	<SubServer location="sideB" name="Subsricber" ><host>cvp.rs.dev.com</host><ip>10.16.64.21</ip><desc>CVP-RS</desc><enable>1</enable><status>1</status></SubServer>
+	
 </MainServer>
-
-
+<MainServer name="MediaServer" side="A">
+	<SubServer location="sideA" name="MediaServer" ><host>cvp.vs.dev.com</host><ip>10.16.69.41</ip><desc>CVP-VXML Server</desc><enable>1</enable><status>1</status></SubServer>
+</MainServer>
+<MainServer name="MediaServer" side="B">
+	<SubServer location="sideB" name="MediaServer" ><host>cvp.vs.dev.com</host><ip>10.16.69.41</ip><desc>CVP-VXML Server</desc><enable>1</enable><status>1</status></SubServer>
+</MainServer>
+<MainServer name="SpeechServer" side="A">
+	<SubServer location="sideA" name="SpeechServer" ><host>cvp.vs.dev.com</host><ip>10.16.69.41</ip><desc>CVP-VXML Server</desc><enable>1</enable><status>1</status></SubServer>
+</MainServer>
+<MainServer name="SpeechServer" side="B">
+	<SubServer location="sideB" name="SpeechServer" ><host>cvp.vs.dev.com</host><ip>10.16.69.41</ip><desc>CVP-VXML Server</desc><enable>1</enable><status>1</status></SubServer>
+</MainServer>
+<MainServer name="CAD-Finesse" side="A">
+	<SubServer location="sideA" name="CAD" ><host>cvp.vs.dev.com</host><ip>10.16.69.41</ip><desc>CVP-VXML Server</desc><enable>1</enable><status>1</status></SubServer>
+	<SubServer location="sideA" name="Finesse" ><host>cvp.rs.dev.com</host><ip>10.16.64.21</ip><desc>CVP-RS</desc><enable>1</enable><status>1</status></SubServer>
+</MainServer>
+<MainServer name="CAD-Finesse" side="B">
+	<SubServer location="sideB" name="CAD" ><host>cvp.vs.dev.com</host><ip>10.16.69.41</ip><desc>CVP-VXML Server</desc><enable>1</enable><status>1</status></SubServer>
+	<SubServer location="sideB" name="Finesse" ><host>cvp.rs.dev.com</host><ip>10.16.64.21</ip><desc>CVP-RS</desc><enable>1</enable><status>1</status></SubServer>
+</MainServer>
+<MainServer name="MediaSense" side="A">
+	<SubServer location="sideA" name="Primary" ><host>cvp.vs.dev.com</host><ip>10.16.69.41</ip><desc>CVP-VXML Server</desc><enable>1</enable><status>1</status></SubServer>
+	<SubServer location="sideA" name="Secondary" ><host>cvp.rs.dev.com</host><ip>10.16.64.21</ip><desc>CVP-RS</desc><enable>1</enable><status>1</status></SubServer>
+	<SubServer location="sideA" name="Expansion" ><host>cvp.oc.dev.com</host><ip>10.16.59.64</ip><desc>CVP-OC</desc><enable>1</enable><status>1</status></SubServer>
+</MainServer>
+<MainServer name="MediaSense" side="B">
+	<SubServer location="sideB" name="Primary" ><host>cvp.vs.dev.com</host><ip>10.16.69.41</ip><desc>CVP-VXML Server</desc><enable>1</enable><status>1</status></SubServer>
+	<SubServer location="sideB" name="Secondary" ><host>cvp.rs.dev.com</host><ip>10.16.64.21</ip><desc>CVP-RS</desc><enable>1</enable><status>1</status></SubServer>
+	<SubServer location="sideB" name="Expansion" ><host>cvp.oc.dev.com</host><ip>10.16.59.64</ip><desc>CVP-OC</desc><enable>1</enable><status>1</status></SubServer>
+</MainServer>
+<MainServer name="UnifiedIC" side="A">
+	<SubServer location="sideA" name="Publisher" ><host>cvp.vs.dev.com</host><ip>10.16.69.41</ip><desc>CVP-VXML Server</desc><enable>1</enable><status>1</status></SubServer>
+	<SubServer location="sideA" name="Member" ><host>cvp.rs.dev.com</host><ip>10.16.64.21</ip><desc>CVP-RS</desc><enable>1</enable><status>1</status></SubServer>
+</MainServer>
+<MainServer name="UnifiedIC" side="B">
+	<SubServer location="sideB" name="Publisher" ><host>cvp.vs.dev.com</host><ip>10.16.69.41</ip><desc>CVP-VXML Server</desc><enable>1</enable><status>1</status></SubServer>
+	<SubServer location="sideB" name="Member" ><host>cvp.rs.dev.com</host><ip>10.16.64.21</ip><desc>CVP-RS</desc><enable>1</enable><status>1</status></SubServer>
+</MainServer>
+<MainServer name="Unity" side="A">
+	<SubServer location="sideA" name="Unity" ><host>cvp.vs.dev.com</host><ip>10.16.69.41</ip><desc>CVP-VXML Server</desc><enable>1</enable><status>1</status></SubServer>
+	<SubServer location="sideA" name="Unity Connection" ><host>cvp.rs.dev.com</host><ip>10.16.64.21</ip><desc>CVP-RS</desc><enable>1</enable><status>1</status></SubServer>
+	<SubServer location="sideA" name="Unity Express" ><host>cvp.oc.dev.com</host><ip>10.16.59.64</ip><desc>CVP-OC</desc><enable>1</enable><status>1</status></SubServer>
+</MainServer>
+<MainServer name="Unity" side="B">
+	<SubServer location="sideB" name="Unity" ><host>cvp.vs.dev.com</host><ip>10.16.69.41</ip><desc>CVP-VXML Server</desc><enable>1</enable><status>1</status></SubServer>
+	<SubServer location="sideB" name="Unity Connection" ><host>cvp.rs.dev.com</host><ip>10.16.64.21</ip><desc>CVP-RS</desc><enable>1</enable><status>1</status></SubServer>
+	<SubServer location="sideB" name="Unity Express" ><host>cvp.oc.dev.com</host><ip>10.16.59.64</ip><desc>CVP-OC</desc><enable>1</enable><status>1</status></SubServer>
+</MainServer>
+<MainServer name="Gateway" side="A">
+	<SubServer location="sideA" name="Ingress/Egress" ><host>cvp.vs.dev.com</host><ip>10.16.69.41</ip><desc>CVP-VXML Server</desc><enable>1</enable><status>1</status></SubServer>
+	<SubServer location="sideA" name="Ingress" ><host>cvp.rs.dev.com</host><ip>10.16.64.21</ip><desc>CVP-RS</desc><enable>1</enable><status>1</status></SubServer>
+	<SubServer location="sideA" name="Egress" ><host>cvp.oc.dev.com</host><ip>10.16.59.64</ip><desc>CVP-OC</desc><enable>1</enable><status>1</status></SubServer>
+	<SubServer location="sideA" name="VXML" ><host>cvp.oc.dev.com</host><ip>10.16.59.64</ip><desc>CVP-OC</desc><enable>1</enable><status>1</status></SubServer>
+	<SubServer location="sideA" name="CUBE" ><host>cvp.oc.dev.com</host><ip>10.16.59.64</ip><desc>CVP-OC</desc><enable>1</enable><status>1</status></SubServer>
+	<SubServer location="sideA" name="Gateway" ><host>cvp.oc.dev.com</host><ip>10.16.59.64</ip><desc>CVP-OC</desc><enable>1</enable><status>1</status></SubServer>
+</MainServer>
+<MainServer name="Gateway" side="B">
+	<SubServer location="sideB" name="Ingress/Egress" ><host>cvp.vs.dev.com</host><ip>10.16.69.41</ip><desc>CVP-VXML Server</desc><enable>1</enable><status>1</status></SubServer>
+	<SubServer location="sideB" name="Ingress" ><host>cvp.rs.dev.com</host><ip>10.16.64.21</ip><desc>CVP-RS</desc><enable>1</enable><status>1</status></SubServer>
+	<SubServer location="sideB" name="Egress" ><host>cvp.oc.dev.com</host><ip>10.16.59.64</ip><desc>CVP-OC</desc><enable>1</enable><status>1</status></SubServer>
+	<SubServer location="sideB" name="VXML" ><host>cvp.oc.dev.com</host><ip>10.16.59.64</ip><desc>CVP-OC</desc><enable>1</enable><status>1</status></SubServer>
+	<SubServer location="sideB" name="CUBE" ><host>cvp.oc.dev.com</host><ip>10.16.59.64</ip><desc>CVP-OC</desc><enable>1</enable><status>1</status></SubServer>
+	<SubServer location="sideB" name="Gateway" ><host>cvp.oc.dev.com</host><ip>10.16.59.64</ip><desc>CVP-OC</desc><enable>1</enable><status>1</status></SubServer>
+</MainServer>
 </Servers>
