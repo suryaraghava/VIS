@@ -1,12 +1,18 @@
 package com.ccn.vis.dao;
 
+import java.io.IOException;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
-import com.ccn.vis.data.*;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+
+import com.ccn.vis.data.User;
+import com.ccn.vis.data.XMLNode;
 
 public class UserDAO {
 
@@ -51,6 +57,30 @@ public class UserDAO {
 									ip=subeElement.getElementsByTagName("ip").item(0).getTextContent();
 									desc=subeElement.getElementsByTagName("desc").item(0).getTextContent();
 									status=subeElement.getElementsByTagName("status").item(0).getTextContent();
+									boolean flag = false;
+									
+									try{
+										InetAddress inet = InetAddress.getByName(ip);
+										flag = inet.isReachable(2000);
+										System.out.println(ip+" Status Flag is:"+flag);
+										if(flag)
+										{
+											status="1";
+										}else{
+											status="0";
+										}
+									}
+									catch(UnknownHostException e)
+									{
+										e.printStackTrace();
+									}
+									catch(IOException io)
+									{
+										io.printStackTrace();
+									}catch(NullPointerException np){
+										np.printStackTrace();
+									}
+									
 									enable = subeElement.getElementsByTagName("enable").item(0).getTextContent();
 									if(status.equals("1")){
 										status="OK";

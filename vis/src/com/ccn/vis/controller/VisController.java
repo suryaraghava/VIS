@@ -159,7 +159,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -208,7 +207,7 @@ public class VisController {
 			ipAddress = "0.0.0.0";
 		}
 		try{
-			flag=InetAddress.getByName(ipAddress).isReachable(6000);
+			flag=InetAddress.getByName(ipAddress).isReachable(200);
 
 			if(flag)
 			{

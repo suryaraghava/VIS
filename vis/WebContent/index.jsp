@@ -247,7 +247,7 @@
 </script>
 <form id="fieldform">
 		<select id="selectComponent" name="selectComponent">
-			<option value="Choose">Choose Component</option>
+			<option value="Choose" selected="selected">Choose Component</option>
 			<option value="Call Server">Call Server</option>
 			<option value="VXML Server">VXML Server</option>
 			<option value="Reporting Server">Reporting Server</option>

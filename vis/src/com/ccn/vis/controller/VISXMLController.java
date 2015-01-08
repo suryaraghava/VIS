@@ -241,9 +241,10 @@ public class VISXMLController extends HttpServlet {
 					
 					JsonArray jsonArray = element.getAsJsonArray();
 					String listData=jsonArray.toString();
+					System.out.println(listData);
 					listData= "{\"Result\":\"OK\",\"Records\":"+listData+"}";
 					response.getWriter().print(listData);
-					
+					 
 				}catch(Exception ex){
 					String error="{\"Result\":\"ERROR\",\"Message\":"+ex.getMessage()+"}";
 					try {

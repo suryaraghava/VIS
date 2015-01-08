@@ -19,6 +19,15 @@
 	}
 </style>
 <script>
+// see http://www.CodeDesignPatterns.com/javascript/window-onload-function-chaining/
+function onloadFunction(prevOnloadFunction) {
+   return function() {
+      displayUI();
+   };
+}
+window.onload = onloadFunction(window.onload);
+</script>
+<script>
 	$(document).ready(
 		function() {
 			$('#fieldAddForm').submit(
@@ -35,7 +44,7 @@
 	function displayUI() {	
 		
 		var selectedCompVal = $("#selectComponent option:selected").val();
-		if(selectedCompVal == 'Choose'){
+		if(selectedCompVal == 'Choose' || selectedCompVal == undefined || selectedCompVal == ''){
 			$("#display").empty();
 			$('#warning').html('<p><span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span><strong>Choose a component to add.</strong></p>');
 		}else{
@@ -85,7 +94,7 @@
 	}
 	
 	function testConnection1(){
-		alert("test");
+		//alert("test");
 		var isValid = true;
 		$('input[id="ipaddress"]').each(function(){
 			if($.trim($('#ipaddress').val()) == ''){
@@ -404,8 +413,8 @@ function displayGateway(){
             title: '<%=request.getParameter("title")%>',
            // paging: true, //Enable paging
            // pageSize: 10, //Set page size (default: 10)
-            //sorting: false, //Enable sorting
-            //defaultSorting: 'ip ASC', //Set default sorting
+            // sorting: true, //Enable sorting
+            defaultSorting: 'subServerName ASC', //Set default sorting
             //clientSort: true, //this needs jquery.tablesorter.min.js
         	//columnResizable: false,
         	//columnSelectable: true,
@@ -464,13 +473,13 @@ function displayGateway(){
                 },
                 enable: {
                 	title:'Enable ',
-                    width: '30%',
+                    width: '20%',
        				edit: true
                 },
             	status: {
             		edit:false,
                 	title: 'Status',                    
-                    width: '50%',
+                    width: '10%',
                      display: function (data) {
                     	if(data.record.status=="OK"){
                         return '<img src="resources/images/green.jpg" height="13" width="55" align="center"/>';}
@@ -497,7 +506,7 @@ function displayGateway(){
 <div id="Edit" >
 
 		<br/>
-		<form id="fieldAddForm">
+		<form id="fieldAddForm" >
 		<%
 			String str = request.getParameter("mainServer");
 			request.setAttribute("main_server",str); 
@@ -505,8 +514,8 @@ function displayGateway(){
 			String str1 = request.getParameter("side");
 			request.setAttribute("side",str1);
 		%>
-		<select id="selectComponent" name="component" onchange="displayUI()">
-			<option value="Choose">Choose Component</option>
+		<select id="selectComponent" name="component" onchange="displayUI()" onfocus="displayUI()">
+			<option value="Choose" selected="selected">Choose Component</option>
 			<option value="UnifiedICM">Unified ICM</option>
 			<option value="UnifiedCVP">Unified CVP</option>
 			<option value="UnifiedCM">Unified CM</option>
