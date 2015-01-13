@@ -26,7 +26,7 @@ public class UserDAO {
 		String ip=null;
 		String desc=null;
 		try {
-			Document document = XMLNode.returnDocument("/customer.xml");
+			Document document = XMLNode.returnDocument("E:/customer.xml");
 			NodeList nList = XMLNode.returnNodeList(document);
 		
 			for (int i = 0; i < nList.getLength(); i++)

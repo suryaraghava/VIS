@@ -241,7 +241,7 @@ System.out.println(status);
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder builder = factory.newDocumentBuilder();
 		//Build Document
-		Document document = builder.parse(new File("/customer.xml"));
+		Document document = builder.parse(new File("E:E:/customer.xml"));
 		//Normalize the XML Structure; It's just too important !!
 		document.getDocumentElement().normalize();
 		//Here comes the root node
@@ -275,7 +275,7 @@ System.out.println(status);
 		TransformerFactory transformerFactory = TransformerFactory.newInstance();
 		Transformer transformer = transformerFactory.newTransformer();
 		DOMSource source = new DOMSource(document);
-		StreamResult result = new StreamResult(new File("/customer.xml"));
+		StreamResult result = new StreamResult(new File("E:/customer.xml"));
 		transformer.transform(source, result);
 
 
@@ -317,7 +317,7 @@ System.out.println(status);
 
 				DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 				DocumentBuilder builder = factory.newDocumentBuilder();
-				Document document = builder.parse(new File("/customer.xml"));
+				Document document = builder.parse(new File("E:/customer.xml"));
 				document.getDocumentElement().normalize();
 				Element root = document.getDocumentElement();
 				NodeList nList = document.getElementsByTagName("MainServer");
@@ -361,7 +361,7 @@ System.out.println(status);
 				TransformerFactory transformerFactory = TransformerFactory.newInstance();
 				Transformer transformer = transformerFactory.newTransformer();
 				DOMSource source = new DOMSource(document);
-				StreamResult result = new StreamResult(new File("/customer.xml"));
+				StreamResult result = new StreamResult(new File("E:/customer.xml"));
 				transformer.transform(source, result);
 			/*}else{
 				status="fail";

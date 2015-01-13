@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?><Servers>
+<MainServer name="UnifiedCVP" side="A">
+</MainServer>
+<MainServer name="UnifiedCVP" side="B">
+</MainServer>
+<MainServer name="UnifiedICM" side="A">
+</MainServer>
+<MainServer name="UnifiedICM" side="B">
+</MainServer>
+<MainServer name="UnifiedCM" side="A">
+</MainServer>
+<MainServer name="UnifiedCM" side="B">
+
+</MainServer>
+<MainServer name="MediaServer" side="A">
+</MainServer>
+<MainServer name="MediaServer" side="B">
+</MainServer>
+<MainServer name="SpeechServer" side="A">
+</MainServer>
+<MainServer name="SpeechServer" side="B">
+</MainServer>
+<MainServer name="CAD-Finesse" side="A">
+</MainServer>
+<MainServer name="CAD-Finesse" side="B">
+</MainServer>
+<MainServer name="MediaSense" side="A">
+</MainServer>
+<MainServer name="MediaSense" side="B">
+</MainServer>
+<MainServer name="UnifiedIC" side="A">
+</MainServer>
+<MainServer name="UnifiedIC" side="B">
+</MainServer>
+<MainServer name="Unity" side="A">
+</MainServer>
+<MainServer name="Unity" side="B">
+</MainServer>
+<MainServer name="Gateway" side="A">
+</MainServer>
+<MainServer name="Gateway" side="B">
+</MainServer>
+</Servers>
