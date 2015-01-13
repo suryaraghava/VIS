@@ -55,7 +55,7 @@ public class VisController {
 			np.printStackTrace();
 		}
 
-		return usrData;		
+		return usrData;
 	}
 
 	@RequestMapping(value = "/vis/cbadelete", method = RequestMethod.POST,headers={"Accept=application/json"},produces="application/json")
@@ -69,7 +69,7 @@ public class VisController {
 		{
 			Node node = nList.item(i);
 			if (node.getNodeType() == Node.ELEMENT_NODE)
-			{        
+			{
 				Element eElement = (Element) node;
 				//String mainServerName=eElement.getAttribute("name");
 				NodeList nnlist=eElement.getElementsByTagName("SubServer");
@@ -77,17 +77,17 @@ public class VisController {
 				{
 					Node snode=nnlist.item(j);
 					if(snode.getNodeType()==Node.ELEMENT_NODE)
-					{ 
+					{
 						Element subeElement=(Element)snode;
 						if(server.equalsIgnoreCase(subeElement.getAttribute("name")))
 						{
 							eElement.removeChild(snode);
 						}
 					}
-				}	
+				}
 			}
 		}
-		XMLNode.transformDoc(doc);		
+		XMLNode.transformDoc(doc);
 		return usrData;
 	}
 
@@ -202,13 +202,13 @@ public class VisController {
 		String status="no";
 
 		String ipAddress=req.getParameter("ip");
-		System.out.println(ipAddress);
+		System.out.println("IPAddresss->"+ipAddress);
 		if(ipAddress==null || ipAddress == "" || ipAddress.equals(" ")){
 			ipAddress = "0.0.0.0";
 		}
 		try{
-			flag=InetAddress.getByName(ipAddress).isReachable(200);
-
+			flag=InetAddress.getByName(ipAddress).isReachable(2000);
+			System.out.println("***** Flag->"+flag);
 			if(flag)
 			{
 				status="ok";
@@ -230,7 +230,7 @@ public class VisController {
 			np.printStackTrace();
 		}
 System.out.println(status);
-		return usrData;		
+		return usrData;
 	}
 
 	@RequestMapping(value = "/vis/cbadelete", method = RequestMethod.POST,headers={"Accept=application/json"},produces="application/json")
@@ -241,9 +241,9 @@ System.out.println(status);
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder builder = factory.newDocumentBuilder();
 		//Build Document
-		Document document = builder.parse(new File(VisController.class.getResource("/customer.xml").getPath()));        
+		Document document = builder.parse(new File("/customer.xml"));
 		//Normalize the XML Structure; It's just too important !!
-		document.getDocumentElement().normalize();         
+		document.getDocumentElement().normalize();
 		//Here comes the root node
 		Element root = document.getDocumentElement();
 		NodeList nList = document.getElementsByTagName("MainServer");
@@ -252,7 +252,7 @@ System.out.println(status);
 			Node node = nList.item(i);
 			if (node.getNodeType() == Node.ELEMENT_NODE)
 			{
-				//Print each employee's detail        
+				//Print each employee's detail
 				Element eElement = (Element) node;
 				String mainServerName=eElement.getAttribute("name");
 				NodeList nnlist=eElement.getElementsByTagName("SubServer");
@@ -260,7 +260,7 @@ System.out.println(status);
 				{
 					Node snode=nnlist.item(j);
 					if(snode.getNodeType()==Node.ELEMENT_NODE)
-					{ 
+					{
 
 						Element subeElement=(Element)snode;
 						if(server.equalsIgnoreCase(subeElement.getAttribute("name")))
@@ -269,13 +269,13 @@ System.out.println(status);
 
 						}
 					}
-				}	
+				}
 			}
 		}
 		TransformerFactory transformerFactory = TransformerFactory.newInstance();
 		Transformer transformer = transformerFactory.newTransformer();
 		DOMSource source = new DOMSource(document);
-		StreamResult result = new StreamResult(new File(VisController.class.getResource("/customer.xml").getPath()));
+		StreamResult result = new StreamResult(new File("/customer.xml"));
 		transformer.transform(source, result);
 
 
@@ -285,19 +285,19 @@ System.out.println(status);
 	@RequestMapping(value = "/vis/cbaSave", method = RequestMethod.POST,headers={"Accept=application/json"},produces="application/json")
 	public @ResponseBody User updateXml(HttpServletRequest req)throws Exception
 	{
-		
+
 		User usrData =  new User();
 		boolean flag=false;
 		String status="Fail";
-		
+
 		String mainServer=req.getParameter("component").toString();
 		String side = req.getParameter("side").toString();
-		
+
 		String ipAddress=req.getParameter("ipaddress");
 		String server= req.getParameter("serverName");
 		String hostname=req.getParameter("hostname");
 		String desc=req.getParameter("description");
-		
+
 		String enable = req.getParameter("enable");
 		System.out.println("Main Server:"+mainServer);
 		System.out.println("Side:"+side);
@@ -317,8 +317,8 @@ System.out.println(status);
 
 				DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 				DocumentBuilder builder = factory.newDocumentBuilder();
-				Document document = builder.parse(new File(VisController.class.getResource("/customer.xml").getPath()));
-				document.getDocumentElement().normalize(); 
+				Document document = builder.parse(new File("/customer.xml"));
+				document.getDocumentElement().normalize();
 				Element root = document.getDocumentElement();
 				NodeList nList = document.getElementsByTagName("MainServer");
 				for (int i = 0; i < nList.getLength(); i++)
@@ -336,7 +336,7 @@ System.out.println(status);
 				atr.setValue("side"+side);
 				Attr atr1=document.createAttribute("name");
 				atr1.setValue(server);
-				
+
 				subServer.setAttributeNode(atr);
 				subServer.setAttributeNode(atr1);
 				Element hostelement=document.createElement("host");
@@ -361,7 +361,7 @@ System.out.println(status);
 				TransformerFactory transformerFactory = TransformerFactory.newInstance();
 				Transformer transformer = transformerFactory.newTransformer();
 				DOMSource source = new DOMSource(document);
-				StreamResult result = new StreamResult(new File(VisController.class.getResource("/customer.xml").getPath()));
+				StreamResult result = new StreamResult(new File("/customer.xml"));
 				transformer.transform(source, result);
 			/*}else{
 				status="fail";

@@ -284,7 +284,7 @@ public class VISXMLController extends HttpServlet {
 					//Build Document
 					Document document = null;
 					try {
-						document = builder.parse(new File(VISXMLController.class.getResource("/customer.xml").getPath()));
+						document = builder.parse(new File("/customer.xml"));
 					} catch (SAXException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -351,7 +351,7 @@ public class VISXMLController extends HttpServlet {
 						e.printStackTrace();
 					}
 					DOMSource source = new DOMSource(document);
-					StreamResult result = new StreamResult(new File(VISXMLController.class.getResource("/customer.xml").getPath()));
+					StreamResult result = new StreamResult(new File("/customer.xml"));
 					try {
 						transformer.transform(source, result);
 					} catch (TransformerException e) {
@@ -386,7 +386,7 @@ public class VISXMLController extends HttpServlet {
 					DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 					DocumentBuilder builder = factory.newDocumentBuilder();
 					//Build Document
-					Document document = builder.parse(new File(VISXMLController.class.getResource("/customer.xml").getPath()));        
+					Document document = builder.parse(new File("/customer.xml"));        
 					//Normalize the XML Structure; It's just too important !!
 					document.getDocumentElement().normalize();         
 					//Here comes the root node
@@ -423,7 +423,7 @@ public class VISXMLController extends HttpServlet {
 					TransformerFactory transformerFactory = TransformerFactory.newInstance();
 					Transformer transformer = transformerFactory.newTransformer();
 					DOMSource source = new DOMSource(document);
-					StreamResult result = new StreamResult(new File(VISXMLController.class.getResource("/customer.xml").getPath()));
+					StreamResult result = new StreamResult(new File("/customer.xml"));
 					transformer.transform(source, result);
 					
 					

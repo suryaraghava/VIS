@@ -26,7 +26,7 @@ public class UserDAO {
 		String ip=null;
 		String desc=null;
 		try {
-			Document document = XMLNode.returnDocument(UserDAO.class.getResource("/customer.xml").getPath());
+			Document document = XMLNode.returnDocument("/customer.xml");
 			NodeList nList = XMLNode.returnNodeList(document);
 		
 			for (int i = 0; i < nList.getLength(); i++)
@@ -87,7 +87,7 @@ public class UserDAO {
 									}else{
 										status="Failed";
 									}
-									if(enable.equals("1")){
+									if(enable.equals("1") || enable.equalsIgnoreCase("on")){
 										enable="Yes";
 									}else{
 										enable="No";

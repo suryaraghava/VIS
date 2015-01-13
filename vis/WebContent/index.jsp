@@ -55,7 +55,7 @@
       });
    </script>
 <script>
-	function addToPage() {		
+	function addToPage() {
 		$components = $('#addComponent');
 		var selectedCompVal = $("#selectComponent option:selected").val();
 		if(selectedCompVal == 'Choose'){
@@ -88,14 +88,14 @@
                 });
 			}
 		});
-		if (isValid == false) 
+		if (isValid == false)
             e.preventDefault();
         else{
         	var testIP=
     		{
     			"ip":$('#ipaddress').val()
 			};
-        	
+
     		$.ajax({
     			type: 'POST',
     			url: "vis/cbatest.do",
@@ -103,7 +103,7 @@
     			dataType:'json',
     			success: function (res) {
 	    			if(res.ans=='ok')
-	    			{ 
+	    			{
 	    				$('#message').html('<p><span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span><strong>Connection to Server is Good!!!</strong></p>');
 	    				//$('#editsave').removeAttr("disabled");
 	    				$('#ipaddress').attr("disabled","disabled");
@@ -111,19 +111,19 @@
 	    				$('#hostname').attr("disabled","disabled");
 	    				$('#desc').focus();
 	    			}else if(res.ans=='fail'){
-	    				$('#message').html('<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span><strong>Oops! Thats a invalid IP, enter valid IP and test.</strong></p>');
-		    		}else{					
+	    				$('#message').html('<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span><strong>Oops! Thats an invalid IP Address. Please enter a valid IP Address.</strong></p>');
+		    		}else{
 	    				$('#message').html('<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span><strong>Test Failed!!!</strong></p>');
 	    			}
     			}
     		});
-		} 
+		}
 	}
 
 	function saveComponent()
 	{
 		var selectedVal={
-				"host":$('#hostname').val(),	
+				"host":$('#hostname').val(),
 				"ip":$('#ipaddress').val(),
 				"description":$('#desc').val(),
 				"subServerName":$("#selectComponent option:selected").val(),
@@ -141,9 +141,9 @@
 				$('#addother').removeAttr("disabled");
 			}
 		});
-	}	
+	}
 	function addother()
-	{	
+	{
 		$("#selectComponent option:not(:first):selected").remove();
 		if($("#selectComponent option").length==1){
 			$("#selectComponent").remove();
@@ -151,8 +151,8 @@
 			$("#warning").remove();
 		}
 		$('#Edit').html('<p><span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span><strong>Please choose Components to Add from View Page!!!</strong></p>');
-		$("#tabs").tabs({active:0});	
-	}	
+		$("#tabs").tabs({active:0});
+	}
 	$(document).ready(
 		function() {
 			$('#fieldform').submit(
@@ -160,13 +160,13 @@
 					addToPage();
 					event.preventDefault();
 				}
-			);    
+			);
 		}
-	);	
+	);
 </script>
 <script>
 	$(function() {
-    	$( "#tabs" ).tabs();    	
+    	$( "#tabs" ).tabs();
     });
 </script>
 <style>
@@ -216,7 +216,7 @@
                     key: true,
                     list: true,
                     width: '20%',
-                    create:	true	                    
+                    create:	true
                 },
     	        ip: {
         	        title: 'IP Address',
@@ -234,12 +234,12 @@
        				edit: true
                 },
             	status: {
-                	title: 'Status',                    
+                	title: 'Status',
                     width: '50%',
                     display: function (data) {
                         return '<img src="resources/images/green.jpg" height="13" width="55" align="center"/>';
                    }
-				} 
+				}
 			}
         });
         $('#View').jtable('load');
@@ -255,7 +255,7 @@
 			<option value="Operations Console">Operations Console</option>
 		</select>
 		<input name="submitButton" id="submitButton" type="submit" value="Add Component" /><br/>
-		<div id="warning"></div>		
+		<div id="warning"></div>
 	</form>
 </div>
 <div id="Edit">
